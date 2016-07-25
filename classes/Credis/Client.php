@@ -1308,5 +1308,10 @@ class Credis_Client {
     {
         return sprintf('*%d%s%s%s', count($args), CRLF, implode(array_map(array('self', '_map'), $args), CRLF), CRLF);
     }
+    
+    private static function _map($arg)
+    {
+        return sprintf('$%d%s%s', strlen($arg), CRLF, $arg);
+    }
 
 }
